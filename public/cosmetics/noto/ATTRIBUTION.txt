@@ -1,0 +1,5 @@
+Animated Noto Emoji artwork by Google, licensed under Creative Commons Attribution 4.0 International.
+Source: https://googlefonts.github.io/noto-emoji-files/?view=docs
+License: https://creativecommons.org/licenses/by/4.0/
+Butterfly (U+1F98B), cherry blossom (U+1F338), sparkles (U+2728), glowing star (U+1F31F).
+Original image files are unmodified. Saha arranges, scales and moves the images as part of its own compositions.

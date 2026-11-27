@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#15171d">
+  <title>ساحة | Saha</title>
+  <link rel="icon" href="/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/arena.css">
+  <link rel="stylesheet" href="/ludo.css">
+  <link rel="stylesheet" href="/party.css">
+  <link rel="stylesheet" href="/clubhouse.css">
+  <link rel="stylesheet" href="/replica.css">
+  <link rel="stylesheet" href="/profile.css">
+  <link rel="stylesheet" href="/neon.css">
+  <link rel="stylesheet" href="/cosmetics.css">
+  <link rel="stylesheet" href="/game-cover.css">
+  <link rel="stylesheet" href="/saha-theme.css">
+</head>
+<body>
+  <a class="skip" href="#main" data-t="skip"></a>
+  <aside class="sidebar">
+    <a href="#home" class="brand"><img src="/mark.svg" alt=""><span><b data-t="brand"></b><small data-t="brandSub"></small></span></a>
+    <nav aria-label="Navigation" id="nav"></nav>
+    <div class="sidebar-foot"><span class="connection-dot"></span><span id="side-status"></span></div>
+  </aside>
+  <div class="shell">
+    <header class="topbar">
+      <a href="#home" class="mobile-brand"><img src="/mark.svg" alt=""><b data-t="brand"></b></a>
+      <div class="top-actions"><a id="staff-link" class="button secondary" href="#admin" data-t="adminPanel" hidden></a>
+        <a href="#settings" class="button secondary settings-link" id="settings-link"><i data-icon="settings" aria-hidden="true"></i></a>
+        <a href="#account" class="top-avatar" id="avatar"><i data-icon="user-round"></i></a>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"></main>
+    <footer class="footer"><b data-t="brand"></b><span data-t="brandSub"></span></footer>
+  </div>
+  <dialog id="dialog" aria-labelledby="dialog-title"></dialog>
+  <aside id="room-inbox" aria-live="polite" hidden></aside>
+  <dialog id="profile-dialog" aria-labelledby="profile-preview-title">
+    <div class="dialog-title"><h2 class="preview-title" id="profile-preview-title"></h2><button type="button" class="button secondary" data-close-preview autofocus></button></div>
+    <div class="dialog-content preview-content"></div>
+  </dialog>
+  <dialog id="badge-dialog" aria-labelledby="badge-title"><div class="dialog-title"><h2 id="badge-title"></h2><button class="button secondary" type="button" data-badge-close></button></div><div class="dialog-content"></div></dialog>
+  <dialog id="voice-stage" aria-labelledby="voice-stage-title"><h2 id="voice-stage-title" class="voice-sr-only" data-t="voiceChat"></h2><div class="voice-stage-body"></div></dialog>
+  <div id="notice" class="notice" role="status" hidden></div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+export const catalog = [
+  {id:'orbit',min:4,max:15,group:'deduction',icon:'disc'},
+  {id:'eights', min:2, max:5, icon:'cards', group:'cards'},
+  {id:'hearts', min:4, max:4, icon:'cards', group:'cards'},
+  {id:'spades', min:4, max:4, icon:'spade', group:'cards'},
+  {id:'undercover', min:3, max:8, icon:'disc', group:'party', humanOnly:true},
+  {id:'sketch', min:3, max:8, icon:'grid', group:'party', humanOnly:true},
+  { id: 'chess', min: 2, max: 2, icon: 'knight' },
+  { id: 'color', min: 2, max: 4, icon: 'cards' },
+  { id: 'ludo', min: 2, max: 4, icon: 'dice' },
+  { id: 'tarneeb', min: 4, max: 4, icon: 'spade' },
+  { id: 'connect', min: 2, max: 2, icon: 'grid' },
+  { id: 'domino', min: 2, max: 4, icon: 'tiles' },
+  { id: 'tic', min: 2, max: 2, icon: 'cross' },
+  { id: 'reversi', min: 2, max: 2, icon: 'disc' },
+  { id:'gomoku', min:2, max:2, icon:'grid' },
+  { id:'checkers', min:2, max:2, icon:'disc' },
+  { id:'replica-ar', min:2, max:6, icon:'arabic', humanOnly:true },
+  { id:'replica-en', min:2, max:6, icon:'latin', humanOnly:true }
+];

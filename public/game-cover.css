@@ -1,0 +1,39 @@
+.favorite-cover-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,112px),1fr));gap:10px;list-style:none;padding:0;margin:10px 0}
+.favorite-cover-tile{min-width:0;overflow:hidden;background:#292e3a;border:1px solid #41485a;border-radius:11px;transition:border-color .18s}
+.favorite-cover-tile:has(input:checked){border-color:#b9c7ff;box-shadow:0 0 0 1px #b9c7ff}
+.favorite-cover-open{display:block;width:100%;padding:0;border:0;text-align:start;background:none;color:inherit;cursor:pointer}
+.favorite-cover-open:focus-visible{outline-offset:-3px}
+.favorite-cover-title{display:block;padding:8px 8px 5px;font-size:.85rem;font-weight:700;line-height:1.3;overflow-wrap:anywhere}
+.favorite-cover-choice{display:flex;align-items:center;gap:6px;padding:4px 8px 8px;font-size:.76rem;min-height:34px;cursor:pointer;color:#d4d9e9}
+.favorite-cover-choice input{width:16px;height:16px;flex:none;margin:0;aspect-ratio:1}
+.favorite-cover-editor{margin-block-start:16px;border-block-start:1px solid #41485a;padding-block-start:14px}
+.favorite-cover-editor summary{font-weight:700;cursor:pointer}
+.favorite-cover-field{margin:10px 0 0;border:0;padding:0;min-width:0}
+.favorite-cover-field legend{font-size:.83rem;color:#c3cadb;margin-block-end:4px}
+.favorite-cover-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.favorite-cover-count{font-size:.85rem;color:#cdd6f1;margin:0}
+.dialog-content>.game-cover{border-radius:10px}
+.game-details-meta{display:flex;gap:6px;flex-wrap:wrap;margin-block:10px}
+@media(max-width:420px){.favorite-cover-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){.favorite-cover-tile{transition:none}}
+.favorite-cover-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+.game-photo{display:block;width:100%;flex:none;background-color:#252735;background-image:url('/catalog-art.jpg');background-size:400% 400%;background-position:var(--cover-x) var(--cover-y);aspect-ratio:4/3}
+.dialog-content>.game-photo{aspect-ratio:4/3;max-height:none}
+.game-card .game-photo{border-block-end:1px solid #ffffff18}
+@media(max-width:520px){.home-games .game-card:last-child{grid-column:auto;flex-direction:column}}
+.party-match canvas{display:block;width:min(100%,448px);height:auto;border-radius:12px;background:#f5efe2;margin-block:10px}
+.party-match canvas[data-party-draw]{touch-action:none;cursor:crosshair}
+.party-match .party-form,.party-gallery{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-block:12px}
+.party-match .party-form canvas{flex-basis:100%}
+.party-gallery figure{margin:0;min-width:min(100%,220px);flex:1}
+.party-prompt{display:block;padding:12px;background:#30374e;border-radius:9px}
+.connection-instagram .connection-icon{background:radial-gradient(circle at 29% 99%,#ffcf57 0%,#f12d7e 51%,#7b40d3 85%)}
+.connection-instagram .connection-icon img,.connection-youtube .connection-icon img,.connection-twitch .connection-icon img,.connection-steam .connection-icon img{filter:invert(1)}
+.connection-youtube .connection-icon{background:#e31832}
+.connection-twitch .connection-icon{background:#8146cc}
+.connection-spotify .connection-icon{background:#1ed760}
+.connection-steam .connection-icon{background:#173756}
+.connection-tiktok .connection-icon,.connection-github .connection-icon{background:#f3f4f8}
+
+.game-photo.cover-eights{background:url('/crazy-eights-6767.jpg') center/cover no-repeat #163629}
