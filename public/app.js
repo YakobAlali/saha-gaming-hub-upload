@@ -542,9 +542,12 @@ function paintInbox(){
  const el=$('#room-inbox');
  el.innerHTML=inboxItems.filter(i=>i.expires>Date.now()).map(i=>'<article><strong>'+t('roomInvitation')+'</strong><p><bdi>'+safe(i.name)+'</bdi> · '+safe(i.room)+'</p><button class="button primary" data-reply="yes" data-key="'+safe(i.key)+'">'+t('friendAccept')+'</button> <button class="button secondary" data-reply="no" data-key="'+safe(i.key)+'">'+t('friendDecline')+'</button></article>').join('');
  el.hidden=!el.childElementCount;
+ const count=$('#notification-count');
+ if(count){count.textContent=num(inboxItems.filter(i=>i.expires>Date.now()).length);count.hidden=!inboxItems.some(i=>i.expires>Date.now());}
 }
 socket.on('room:inbox',items=>{inboxItems=items;paintInbox();});
 setInterval(()=>{if(inboxItems.some(i=>i.expires<=Date.now())){inboxItems=inboxItems.filter(i=>i.expires>Date.now());paintInbox();}},1000);
+$('#notifications-button')?.addEventListener('click',()=>{const el=$('#room-inbox');if(el)el.hidden=!el.hidden;});
 document.addEventListener('click',async e=>{
  const b=e.target.closest('[data-invite-to],[data-reply]');if(!b||b.disabled)return;
  b.disabled=true;

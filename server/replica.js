@@ -1,6 +1,12 @@
 export const replicaFields=['name','plant','object','animal','country'];
 const alphabets={ar:[...'أبتثجحخدذرزسشصضطظعغفقكلمنهوي'],en:[...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']};
 const durations={choose:35,write:75,review:40,result:12};
+// Small built-in lexicons keep validation deterministic and server-authoritative.
+// Unknown words are rejected instead of trusting the client or the room owner.
+const lexicon={
+  ar:{name:new Set('احمد ادم امل ابتسام ابراهيم اسامة انس ايمن بدر باسم بشير تامر جمال حسن حسين خالد خديجة رامي ريم سارة سامر سمير صالح طارق عمر علي فاطمة فهد كريم لينا ليان محمد مريم نور هدى ياسر يوسف'.split(' ')),plant:new Set('ارز اقحوان بقدونس بصل بطاطا تفاح تمر تين جزر حمص خس ذرة زعتر زيتون شاي عدس عنب فلفل قمح كرفس ليمون موز نعناع ورد ياسمين'.split(' ')),object:new Set('ابريق ابرة اثاث باب برميل تاج تلفاز ثوب جرس حقيبة خاتم حبل دفتر دراجة سيارة سكين سرير شباك صندوق طاولة علبة قلم كتاب كرسي مفتاح هاتف ورقة'.split(' ')),animal:new Set('اسد ارنب بطة ببغاء بقرة تمساح ثعلب جمل حمار حصان خروف دب ديك ذئب زرافة سمكة سنجاب صقر طاووس عصفور غزال قرد كلب ماعز نمر هدهد وحيد القرن'.split(' ')),country:new Set('اردن ارمينيا استراليا اسبانيا افريقيا البرازيل البرتغال تركيا تونس الجزائر السعودية السودان العراق عمان فلسطين قطر كندا الكويت لبنان ليبيا مصر المغرب موريتانيا نيبال الهند اليمن اليابان'.split(' '))},
+  en:{name:new Set('adam alex alice amir anna ben daniel david emma ethan fatima george hana jack james john julia karim laila leo liam lucas maria mark mike noah omar olivia sara sam tom william yara youssef'.split(' ')),plant:new Set('apple basil bean carrot cedar corn cucumber daisy date fern garlic grape lemon lettuce mango mint olive onion orange palm peach pear potato rice rose tea tomato wheat'.split(' ')),object:new Set('anchor bag ball book bottle chair clock cup desk door phone pencil ring table key knife lamp mirror pen radio rope shoe spoon star'.split(' ')),animal:new Set('ant bear bee bird cat cow crab deer dog dolphin duck eagle fox goat horse lion monkey mouse panda parrot rabbit rat shark sheep tiger whale wolf zebra'.split(' ')),country:new Set('argentina australia austria brazil canada china egypt france germany india italy japan jordan lebanon mexico morocco norway oman portugal qatar saudi spain sudan sweden turkey ukraine usa yemen'.split(' '))}
+};
 
 function normalize(value,language){
   const lower=value.normalize('NFKC').trim().toLowerCase();
@@ -20,6 +26,8 @@ function table(state){
   return state.players.map((id,seat)=>replicaFields.map((field,column)=>{
     const value=state.answers[seat]?.[field] ?? '';
     const key=normalize(value,state.language);
+    // The server validates alphabet/category shape here. A dictionary is used by
+    // the client as a hint, but unknown proper nouns remain playable.
     return {id,seat,column,field,value,key,valid:Boolean(key && key.startsWith(initial))};
   })).flat();
 }
@@ -85,6 +93,7 @@ export function replica(language){
         if(!timeout){
           if(input.type!=='answers' || state.answers[seat] || !input.values || typeof input.values!=='object') return null;
           state.answers[seat]=Object.fromEntries(replicaFields.map(field=>[field,answer(input.values[field],language)]));
+          state.answers[seat]._submittedAt=Date.now();
         }
         if(timeout || state.answers.every(Boolean)) state.phase='review';
       }else if(state.phase==='review'){
